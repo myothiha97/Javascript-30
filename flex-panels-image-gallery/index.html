@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex-panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <div class="panels">
+            <div class="panel panel--1">
+                <div class="top-text">HEY</div>
+                <div>LET'S</div>
+                <div class="bottom-text">DANCE</div>
+            </div>
+            <div class="panel panel--2">
+                <div class="top-text">GIVE</div>
+                <div>TAKE</div>
+                <div class="bottom-text"> RECEIVE</div>
+
+            </div>
+            <div class="panel panel--3">
+                
+                <div class="top-text">EXPERIENCE</div>
+                <div>IT</div>
+                <div class="bottom-text">TODAY</div>
+                
+            </div>
+            <div class="panel panel--4">
+                <div class="top-text">GIVE</div>
+                <div>ALL</div>
+                <div class="bottom-text">YOU CAN</div>
+            </div>
+            <div class="panel panel--5">
+                
+                <div class="top-text">LIFE</div>
+                <div>IN</div>
+                <div class="bottom-text">MOTION</div>
+                
+            </div>
+        </div>
+
+        <script>
+            const panels = document.querySelectorAll(`.panel`)
+            panels.forEach( p => p.addEventListener('click',function(e) {    
+                this.classList.toggle('grow');
+                
+                // console.dir(this)
+                
+            }))
+
+            panels.forEach( p => p.addEventListener('transitionend',function(event) {    
+                // this.classList.add('appear');
+                if (event.propertyName.includes('flex')) {
+                    this.classList.toggle('appear')
+                }
+                // console.dir(this)
+                
+            }))
+        </script>
+</body>
+</html>

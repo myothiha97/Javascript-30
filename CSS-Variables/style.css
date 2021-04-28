@@ -1,0 +1,75 @@
+:root{
+    --spacing: 1rem;
+    --color: black;
+    --blur: .5px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,body {
+    height: 100%;
+    width: 100%;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: #193549;
+    color: white;
+    font-family: 'helvetica neue', sans-serif;
+    font-size: 5rem;
+    font-weight: 100;
+}
+
+.main {
+    padding: 5rem;
+    text-align: center;
+
+}
+
+.heading > span {
+    color: var(--color);
+}
+
+.controls {
+    margin: 0 auto;
+    margin-top: 4rem;
+    margin-bottom: 5rem;
+    width: 55%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: translateX(-4rem);
+}
+.control-item {
+    display: flex;
+    flex-wrap: nowrap;
+    position: relative;
+}
+
+.control-item:not(:last-child) > input {
+       margin: 1rem;
+       cursor: default;
+}
+
+.control-item-3 > input {
+
+    /* background-color: black; */
+    width: 10rem;
+    position: absolute;
+    top: 3rem;
+    left: 19rem;
+}
+
+.img1 {
+    padding: var(--spacing);
+    background-color: var(--color);
+    filter: blur(var(--blur));
+
+}

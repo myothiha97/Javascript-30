@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+.main{
+    height: inherit;
+    width: inherit;
+    /* padding: 10rem; */
+}
+
+.panels {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel {
+    transition: all 1s cubic-bezier(0.62, -0.99, 0.38, 1.65);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-size: 5rem;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+
+    
+
+}  
+
+.panel--1 {
+    background-image: url('https://source.unsplash.com/gYl-UtwNg_I/1500x1500');
+}
+
+.panel--2 {
+    background-image: url('https://source.unsplash.com/rFKUFzjPYiQ/1500x1500');
+}
+
+.panel--3 {
+    background-image: url('https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&w=1500&h=1500&fit=crop&s=967e8a713a4e395260793fc8c802901d');
+}
+
+.panel--4 {
+    background-image: url('https://source.unsplash.com/ITjiVXcwVng/1500x1500');
+}
+
+.panel--5 {
+    background-image: url('https://source.unsplash.com/3MNzGlQM7qs/1500x1500');
+}
+
+
+
+.grow {
+    flex: 5;
+    font-size: 10rem;
+    opacity: 1;
+}
+
+
+/* .panel:active {
+    flex: 5;
+} */
+
+/* .panel:active > .text > div {
+    flex-grow: 2;
+} */
+
+
+.panel.appear > div:nth-of-type(1) {
+    opacity: 1;
+    transform: translate(0);
+}
+
+
+.panel.appear >  div:nth-of-type(3) {
+    opacity: 1;
+    transform: translate(0);
+}
+
+
+
+.panel >  div {
+    display: block;
+    /* transition: opacity 1s, transform 1s, flex-grow .1s ease-in; */
+    transition: transform .2s ease-in , opacity .5s;
+    text-shadow:  0 0 .6rem rgba(0, 0, 0, .8);
+    
+}
+
+.panel > div:not(:last-child) {
+    margin-bottom: 20rem;
+}
+
+.panel > div:nth-of-type(1) {
+    transform: translateY(-20rem);
+    opacity: 0;
+    
+}
+
+.panel > div:nth-of-type(3) {
+    transform: translateY(20rem);
+    opacity: 0;
+}
+ 

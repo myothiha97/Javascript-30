@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Css Variables</title>
+</head>
+<body>
+    <div class="main">
+        <h2 class="heading">Update CSS Variables with <span>JS</span></h2>
+        <div class="controls">
+            <div class="control-item control-item-1">
+                <label for="spacing">Spacing</label>
+                <input type="range" name="spacing" id="spacing" min="10" max="200" value="10" data-sizing="px">
+            </div>
+            <div class="control-item control-item-2">
+                <label for="blur">blur</label>
+                <input type="range" name="blur" value="10" data-sizing="px" id="blur">
+            </div>
+            <div class="control-item control-item-3">
+                <label for="color">Spacing</label>
+                <input type="color" name="color" id="color" value="#000">
+            </div>
+        </div>
+        <img class="img1" src="https://source.unsplash.com/7bwQXzbF6KE/800x500" alt="mountain.jpg">
+    </div>
+    <script>
+        const inputs = document.querySelectorAll(`.control-item > input`);
+
+        function handleUpdate() {
+
+            const suffix = this.dataset.sizing || '';
+            document.documentElement.style.setProperty(`--${this.name}`,this.value + suffix);
+        }
+        inputs.forEach(i => i.addEventListener('change', handleUpdate))
+        inputs.forEach(i => i.addEventListener('mousemove',handleUpdate))
+    </script>
+</body>
+</html>

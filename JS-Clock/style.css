@@ -1,0 +1,56 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: #018DED url('https://unsplash.it/1500/1000?image=881&blur=5');
+    background-size: cover;
+    font-family: sans-serif;
+    position: relative;
+}
+
+.clock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35rem;
+    height: 35rem;
+    border-radius: 50%;
+    border: 1.5rem solid #fff;
+    box-shadow: 0 0 1rem 1rem rgba(0,0,0,.5);
+    /* box-shadow: 0 0 0 4px rgb(0 0 0 / 10%), inset 0 0 0 3px #efefef, inset 0 0 10px black, 0 0 10px rgb(0 0 0 / 20%); */
+    padding: 1rem;
+}
+
+.hand {
+    position: absolute;
+    top: 50%;
+    /* left: 50%; */
+    /* transform: translate(-50%,-50%); */
+    transform-origin: 100%;
+    transition: all .07s;
+    transition-timing-function: cubic-bezier(0.1, 2.7, .58, 1);
+    width: 46%;
+    height: 1rem;
+    background-color: black;
+}
+
+.hour-hand {
+    background-color: #fff;
+}
+
+.minute-hand {
+    background-color:rgb(238, 44, 70);
+}
