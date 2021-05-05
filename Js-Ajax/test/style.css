@@ -30,10 +30,14 @@ body {
     border: 10px solid #f7f7f7;
     border-radius: 5px;
     padding: 30px;
+    position: relative;
+    z-index: 1;
 }
 
 .cities {
     text-align: center;
+    position: relative;
+    transform: translateY(-3px);
 }
 
 .cities > li {
@@ -46,10 +50,22 @@ body {
     box-shadow: 0 0 10px rgba(0,0,0,.2)
 }
 
-.cities > li:first-child {
-    transform:  perspective(100px) rotateX(-3deg);
+.cities > li:nth-child(odd) {
+    transform:  perspective(100px) rotateX(-3deg) translateY(3px);
+    
 }
 
-.cities > li:last-child {
-    transform: perspective(100px) rotateX(3deg);
+.cities > li:nth-child(even) {
+    transform: perspective(100px) rotateX(3deg) translateY(2px);
+
+    /* margin-bottom: 2px; */
+}
+
+.city-state {
+    display: flex;
+    justify-content: space-between;
+}
+
+.high-light {
+    background-color: yellow;
 }

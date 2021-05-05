@@ -9,13 +9,83 @@
 </head>
 <body>
     <form class="search-box">
-        <input type="text" name="city" placeholder="City or State">
+        <input type="text" name="city" placeholder="City or State" onkeypress="return event.keyCode != 13">
         <ul class="cities">
             <li>Filter For a City</li>
             <li>Or a State</li>
         </ul>
     </form>
     <script>
+        const suggestions = document.querySelector('.cities')
+        const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+        const cities = [];
+        fetch(endpoint)
+        .then(blob => blob.json())
+        .then(data => {
+            cities.push(...data)
+            const searchinput = document.querySelector('.search-box > input')
+            
+            console.log(suggestions)
+            // console.log(cities)
+            if (suggestions) {
+                searchinput.addEventListener('change', displayMatches ,false)
+                searchinput.addEventListener('keypress', displayMatches, false)
+            }})
+        .catch(e => console.log(e))
+        // console.log(...cities)
+
+        function findMatches(wordToMatch,cities) {
+            return cities.filter( c => {
+                if (wordToMatch === '' || wordToMatch === undefined) {
+                    return false;
+                }
+                const pattern = new RegExp(wordToMatch,'gi')
+                return pattern.test(c.city) || pattern.test(c.state)
+            })
+        }
+
+            
+
+        function displayMatches() {
+            console.log(this.value)
+            const matchArr = findMatches(this.value,cities)
+            // console.log(...matchArr)
+            // console.log(matchArr.length)
+            const highlight = `
+                    <span class="high-light">${this.value}</span>
+            `
+            const regex = new RegExp(this.value , 'gi')
+            if (matchArr.length === 0) {
+               suggestions.innerHTML = `
+
+                    <li>Filter For a City</li>
+                    <li>Or a State</li>
+
+               `;
+               
+            }
+            else {
+                
+                const html = matchArr.map(p => {
+                    let pops = p.population
+                    if (pops.length > 3) {
+                        lastPart = pops.slice(-3);
+                        firsPart = pops.slice(0, -3);
+                        pops = firsPart + ',' + lastPart
+                    }
+                return `
+                    <li class="city-state">
+                        <span class="name">${p.city.replace(regex,highlight)}, ${p.state.replace(regex,highlight)}</span>
+                        <span class="population">${pops}</span>
+                    </li>
+                `
+                }).join('');
+                // console.log(html)
+                suggestions.innerHTML = html;
+            }
+            
+        }
+        
         
     </script>
 </body>
